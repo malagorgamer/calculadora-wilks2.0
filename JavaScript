@@ -1,0 +1,18 @@
+function addAthlete(athleteData) {
+    const total = athleteData.squat + athleteData.bench + athleteData.deadlift;
+    const wilks = calculateWilks(athleteData.bodyweight, total, athleteData.gender);
+
+    const athlete = {
+        id: Date.now(),
+        ...athleteData,
+        total: total,
+        wilks: wilks
+    };
+    athletes.push(athlete);
+    updateRanking();
+    renderAthletes();
+    showToast('Atleta adicionado com sucesso!');
+
+    // Salvar no localStorage
+    localStorage.setItem('athletesData', JSON.stringify(athletes));
+}
